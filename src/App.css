@@ -1,0 +1,15 @@
+/* Containers */
+#root {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    min-width: 400px;
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.box {
+    border: 1px solid black;
+    padding: 20px;
+}
