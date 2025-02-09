@@ -4,6 +4,7 @@ import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import tseslint from 'typescript-eslint'
 import react from 'eslint-plugin-react'
+import reactCompiler from 'eslint-plugin-react-compiler'
 
 // Getting Started | typescript-eslint https://typescript-eslint.io/getting-started/
 // Configuration Files - ESLint https://eslint.org/docs/latest/use/configure/configuration-files
@@ -31,6 +32,7 @@ export default tseslint.config({
         'react-hooks': reactHooks,
         'react-refresh': reactRefresh,
         react,
+        'react-compiler': reactCompiler,
     },
     rules: {
         ...reactHooks.configs.recommended.rules,
@@ -40,5 +42,6 @@ export default tseslint.config({
         ],
         ...react.configs.recommended.rules,
         ...react.configs['jsx-runtime'].rules,
+        'react-compiler/react-compiler': 'error',
     },
 })
