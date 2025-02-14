@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60">
+    <!-- Shift the origin to the center -->
+    <g transform="translate(30, 30)">
+        <!-- Vertical bar -->
+        <rect x="-1" y="-15" width="2" height="30" fill="#c2fe0c"/>
+        <!-- Horizontal bar -->
+        <rect x="-15" y="-1" width="30" height="2" fill="#c2fe0c"/>
+    </g>
+</svg>

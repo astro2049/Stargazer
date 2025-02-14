@@ -10,15 +10,20 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@pixi/react": "^7.1.2",
+    "astronomy-engine": "^2.1.19",
+    "pixi.js": "^7.4.2",
     "react": "^18.3.1",
     "react-compiler-runtime": "^19.0.0-beta-714736e-20250131",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "three": "^0.173.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
     "@tailwindcss/vite": "^4.0.1",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
+    "@types/three": "^0.173.0",
     "@vitejs/plugin-react": "^4.3.4",
     "babel-plugin-react-compiler": "^19.0.0-beta-714736e-20250131",
     "eslint": "^9.19.0",

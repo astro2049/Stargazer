@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30">
+    <!-- Move the origin to the center (20, 20) then rotate the cross 45° -->
+    <g transform="translate(15, 15) rotate(45)">
+        <!-- Vertical bar -->
+        <rect x="-2" y="-15" width="4" height="30" fill="#c2fe0c"/>
+        <!-- Horizontal bar -->
+        <rect x="-15" y="-2" width="30" height="4" fill="#c2fe0c"/>
+    </g>
+</svg>

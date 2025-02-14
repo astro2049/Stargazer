@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+/* https://tailwindcss.com/docs/adding-custom-styles */
+@theme {
+    --spacing: 1rem;
+}

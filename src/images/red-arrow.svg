@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20">
+    <!-- Left diagonal bar -->
+    <rect x="3.5" y="0" width="3" height="15" fill="#ff0000" transform="rotate(30, 5, 10)"/>
+    <!-- Right diagonal bar -->
+    <rect x="13.5" y="0" width="3" height="15" fill="#ff0000" transform="rotate(-30, 15, 10)"/>
+</svg>

@@ -1,15 +1,21 @@
+body {
+    font-family: Consolas, monospace;
+    background-image: url('./images/lime-cross.svg');
+    background-repeat: repeat;
+    background-color: oklch(0.444 0.011 73.639); /* --color-stone-600 */
+}
 /* Containers */
 #root {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    min-width: 400px;
-    max-width: 1160px;
+    min-width: 600px;
+    max-width: 1800px;
     margin: 0 auto;
-    padding: 0 20px;
+}
+#container {
+    background-color: #f3f3f3;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
 }
 .box {
-    border: 1px solid black;
-    padding: 20px;
+    /*border: 1px solid orangered;*/
+    padding: 1rem;
 }
