@@ -1,9 +1,9 @@
 import { Body, Equator, Horizon, Observer } from "astronomy-engine";
-import ObserverForm from "./observerForm/ObserverForm.tsx";
+import ObserverForm from "./ObserverForm/ObserverForm.tsx";
 import { useEffect, useRef, useState } from "react";
-import StarMap from "./starMap/StarMap.tsx";
-import Divider from "../components/divider/Divider.tsx";
-import StarsTable from "./starsTable/StarsTable.tsx";
+import StarMap from "./StarMap/StarMap.tsx";
+import Divider from "../components/Divider/Divider.tsx";
+import StarsTable from "./StarsTable/StarsTable.tsx";
 import { bodies } from "./constants.ts";
 
 /* Types */

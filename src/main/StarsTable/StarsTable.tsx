@@ -1,4 +1,4 @@
-import './stars-table.css'
+import './StarsTable.css'
 import { Body } from "astronomy-engine";
 import { StarPosition } from "../Main.tsx";
 

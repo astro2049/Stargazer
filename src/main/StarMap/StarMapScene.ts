@@ -16,7 +16,7 @@ import { MutableRefObject } from "react";
 import { Body } from "astronomy-engine";
 import { CSS2DObject, CSS2DRenderer } from "three/examples/jsm/Addons.js";
 import { StarPosition } from "../Main.tsx";
-import "./star-map.css"
+import "./StarMap.css"
 import compass from "../../images/compass.png"
 
 type StarObject = {

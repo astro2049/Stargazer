@@ -3,7 +3,7 @@ import { StarPosition } from "../Main.tsx";
 import { Body } from "astronomy-engine";
 import StarMapScene from "./StarMapScene.ts";
 import { bodies } from "../constants.ts";
-// import Compass from "../../components/compass/Compass.tsx";
+// import Compass from "../../components/Compass/Compass.tsx";
 
 type Props = {
     lookDirection: number, // in degrees

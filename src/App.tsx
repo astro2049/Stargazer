@@ -1,7 +1,7 @@
 import './App.css'
-import Navbar from "./navbar/Navbar.tsx";
+import Navbar from "./Navbar/Navbar.tsx";
 import Main from "./main/Main.tsx";
-import Footer from "./footer/Footer.tsx";
+import Footer from "./Footer/Footer.tsx";
 
 function App() {
     return (
