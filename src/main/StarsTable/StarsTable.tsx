@@ -6,7 +6,7 @@ type Props = {
     starPositions: Map<Body, StarPosition>
 };
 
-function StarsTable({starPositions}: Props) {
+function StarsTable({ starPositions }: Props) {
     return (
         <div className="box">
             <h1 className="text-2xl mb-1">Celestial Body Positions</h1>

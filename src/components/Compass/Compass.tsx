@@ -67,7 +67,7 @@ function Compass() {
 
     return (
         <Stage width={starMapConfig.width} height={starMapConfig.height}
-               options={{backgroundAlpha: 0, antialias: true}}>
+               options={{ backgroundAlpha: 0, antialias: true }}>
             {/* 1. Tick Marks */}
             <Graphics draw={draw}/>
             <Container x={starMapConfig.width / 2} y={starMapConfig.height / 2}>

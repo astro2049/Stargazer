@@ -4,3 +4,22 @@
 @theme {
     --spacing: 1rem;
 }
+
+body {
+    font-family: Consolas, monospace;
+    background-image: url('./images/lime-cross.svg');
+    background-repeat: repeat;
+    background-color: var(--color-stone-600);
+}
+
+#root {
+    min-width: 600px;
+    max-width: 1800px;
+    margin: 0 auto;
+}
+
+/* Containers */
+.box {
+    /*border: 1px solid orangered;*/
+    padding: 1rem;
+}

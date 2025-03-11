@@ -16,7 +16,6 @@ import { MutableRefObject } from "react";
 import { Body } from "astronomy-engine";
 import { CSS2DObject, CSS2DRenderer } from "three/examples/jsm/Addons.js";
 import { StarPosition } from "../Main.tsx";
-import "./StarMap.css"
 import compass from "../../images/compass.png"
 
 type StarObject = {
@@ -252,7 +251,7 @@ class StarMapScene extends ThreeJsScene {
 
         for (const [body, star] of this.stars!) {
             const coordinate = this.starCoordinates.get(body)!;
-            const {x, y} = this.polarToCartesianCoordinates({
+            const { x, y } = this.polarToCartesianCoordinates({
                 radius: coordinate.radius,
                 angle: coordinate.angle - this.lookAzimuth
             });
