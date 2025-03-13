@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 
 type LabeledInputProps = {
-    label: string,
+    label?: string,
     type: string,
     value: string | number,
     decimalPlaces?: number,
@@ -71,8 +71,7 @@ function LabeledInput({
     }
 
     return (
-        <div>
-            <label className="block text-sm">{label}</label>
+        <div className="relative">
             <input
                 type={type}
                 value={localValue}
@@ -80,9 +79,10 @@ function LabeledInput({
                 onChange={!readOnly ? handleChange : undefined}
                 onBlur={handleBlur}
                 readOnly={readOnly}
-                className={`w-full p-0.5 border ${error ? "focus:outline-red-500" : ""}`}
+                className={`w-[100px] outline-none border-b border-b-stone-400 ${error ? "focus:border-b-red-500" : ""}`}
             />
-            <div className="text-xs text-red-500 h-1 whitespace-nowrap">{error ? errorMessage : ""}</div>
+            {label && <label className="block text-stone-300 text-sm">{label}</label>}
+            <div className="absolute text-xs text-red-500 whitespace-nowrap">{error ? errorMessage : ""}</div>
         </div>
     );
 }

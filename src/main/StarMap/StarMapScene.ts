@@ -61,7 +61,7 @@ class StarMapScene extends ThreeJsScene {
         super(config, canvasRef);
 
         // 1. Scene - background color: #f3f3f3
-        this.scene.background = new Color(0xf3f3f3);
+        this.scene.background = new Color(0x171717);
 
         // 2. Set up 2D renderer, for texts
         // https://threejs.org/docs/#examples/en/renderers/CSS2DRenderer
@@ -83,7 +83,7 @@ class StarMapScene extends ThreeJsScene {
                 new Vector3(0, 1.125, 0)
             ]),
             new LineBasicMaterial({
-                color: 0x000000,
+                color: 0xffffff,
                 transparent: true,
                 opacity: 0.5
             })
@@ -111,7 +111,7 @@ class StarMapScene extends ThreeJsScene {
     // II.D. Camera
     setUpCamera(): void {
         // Imagine we're standing from 5m looking at a 3m * 3m screen/wall
-        const distance = 3.4;
+        const distance = 3.2;
         this.camera = new OrthographicCamera(-distance, distance, distance, -distance, 0.1, distance + 0.1);
         this.camera.position.z = distance;
     }
@@ -169,11 +169,12 @@ class StarMapScene extends ThreeJsScene {
             const mesh = this.createPlaneMeshFromSvgTexture(texture);
 
             const container = document.createElement("div");
-            container.style.fontWeight = "bold";
+            container.style.fontSize = "14px";
             const azimuth = document.createElement("div");
             azimuth.style.lineHeight = "normal";
             container.appendChild(azimuth);
             const name = document.createElement("div");
+            name.style.fontWeight = "bold";
             name.style.lineHeight = "normal";
             name.textContent = star.toString();
             container.appendChild(name);
@@ -300,6 +301,7 @@ class StarMapScene extends ThreeJsScene {
 
     createTextObject(text: string): CSS2DObject {
         const textDiv = document.createElement("div");
+        textDiv.style.fontSize = "14px";
         textDiv.style.fontWeight = "bold";
         textDiv.innerText = text;
         return new CSS2DObject(textDiv);

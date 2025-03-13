@@ -1,9 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60">
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="90" height="90"
+     fill="#c2fe0c" opacity="0.3"
+>
     <!-- Shift the origin to the center -->
-    <g transform="translate(30, 30)">
+    <g transform="translate(45, 45)">
         <!-- Vertical bar -->
-        <rect x="-1" y="-15" width="2" height="30" fill="#c2fe0c"/>
+        <rect x="-0.5" y="-15" width="1" height="30"/>
         <!-- Horizontal bar -->
-        <rect x="-15" y="-1" width="30" height="2" fill="#c2fe0c"/>
+        <rect x="-15" y="-0.5" width="30" height="1"/>
     </g>
 </svg>

@@ -1,25 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 @import "tailwindcss";
 
 /* https://tailwindcss.com/docs/adding-custom-styles */
 @theme {
     --spacing: 1rem;
+
+    --color-sector-divider: var(--color-stone-500);
+    --color-content: var(--color-stone-100);
+
+    --font-inter: "Inter", sans-serif;
 }
 
 body {
-    font-family: Consolas, monospace;
+    @apply font-inter;
     background-image: url('./images/lime-cross.svg');
     background-repeat: repeat;
-    background-color: var(--color-stone-600);
+    background-color: var(--color-stone-900);
+    @apply text-content;
 }
 
 #root {
+    box-sizing: content-box;
     min-width: 600px;
-    max-width: 1800px;
+    max-width: 1300px;
     margin: 0 auto;
+    padding: 0 64px;
+}
+
+h1 {
+    @apply text-stone-200 text-3xl font-bold;
+}
+h2 {
+    @apply text-stone-200 text-[1.375rem] font-semibold;
 }
 
 /* Containers */
 .box {
     /*border: 1px solid orangered;*/
-    padding: 1rem;
+    @apply p-1;
+}
+
+/* Styles */
+th, td {
+    padding: 8px 12px;
 }

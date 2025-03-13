@@ -1,13 +1,12 @@
 function Footer() {
     return (
-        <footer className="bg-black text-white">
-            <div className="
+        <footer className="bg-neutral-950 border-t border-t-stone-400">
+            <h1 className="
                 pt-4 pb-4
-                text-4xl
                 flex justify-center items-center"
             >
                 Stargazer
-            </div>
+            </h1>
             <div className="pl-1 pr-1 flex justify-center">
                 <div className="
                     w-[600px] max-w-full

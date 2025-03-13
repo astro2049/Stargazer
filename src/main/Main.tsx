@@ -2,7 +2,6 @@ import { Body, Equator, Horizon, Observer } from "astronomy-engine";
 import ObserverForm from "./ObserverForm/ObserverForm.tsx";
 import { useEffect, useRef, useState } from "react";
 import StarMap from "./StarMap/StarMap.tsx";
-import Divider from "../components/Divider/Divider.tsx";
 import StarsTable from "./StarsTable/StarsTable.tsx";
 import { bodies } from "./constants.ts";
 
@@ -113,9 +112,7 @@ function Main() {
         <main>
             <ObserverForm observer={observerDetails} setObserver={setObserverDetails} date={date}
                           lookDirection={lookDirection} setLookDirection={setLookDirection}/>
-            <Divider/>
             <StarMap lookDirection={compassLookDirection} starPositions={starPositions}/>
-            <Divider/>
             <StarsTable starPositions={starPositions}/>
         </main>
     );

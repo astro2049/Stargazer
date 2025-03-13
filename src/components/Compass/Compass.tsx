@@ -7,11 +7,11 @@ import { starMapConfig } from "../../main/constants.ts";
 
 /* Constants */
 const radius = 350;
-const lineColor = 0x000000;
+const lineColor = 0xffffff;
 const textStyle = new TextStyle({
     fontFamily: ["Consolas", "monospace"],
     align: "left",
-    fill: 0x000000,
+    fill: 0xffffff,
     fontSize: 20,
     fontWeight: "bold"
 });

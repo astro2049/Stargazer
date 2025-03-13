@@ -25,7 +25,7 @@ function StarMap(
 
         // Initialize star map scene
         starMapSceneRef.current = new StarMapScene(
-            { width: 800, height: 800 },
+            { width: 640, height: 640 },
             canvasRef as MutableRefObject<HTMLDivElement>,
             bodies
         );
@@ -43,9 +43,13 @@ function StarMap(
     }, [lookDirection]);
 
     return (
-        <div className="box" style={{ paddingBottom: 0 }}>
-            <h1 className="text-2xl">Star Map</h1>
-            <div ref={canvasRef} className="relative flex justify-center overflow-hidden"></div>
+        <div>
+            <div className="w-full flex items-center gap-x-1">
+                <div className="w-2 h-[1px] bg-sector-divider"></div>
+                <h2>Star Map</h2>
+                <div className="grow h-[1px] bg-sector-divider"></div>
+            </div>
+            <div ref={canvasRef} className="mt-1 relative flex justify-center overflow-hidden"></div>
             {/*<Compass/>*/}
         </div>
     );
