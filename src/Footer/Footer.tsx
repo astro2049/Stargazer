@@ -1,6 +1,6 @@
 function Footer() {
     return (
-        <footer className="bg-neutral-950 border-t border-t-stone-400">
+        <footer className="bg-neutral-950 border-t border-t-sector-divider">
             <h1 className="
                 pt-4 pb-4
                 flex justify-center items-center"

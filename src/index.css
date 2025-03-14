@@ -13,9 +13,9 @@
 
 body {
     @apply font-inter;
-    background-image: url('./images/lime-cross.svg');
+    background-image: url('./images/cross-background.svg');
     background-repeat: repeat;
-    background-color: var(--color-stone-900);
+    background-color: var(--color-stone-950);
     @apply text-content;
 }
 
@@ -28,7 +28,7 @@ body {
 }
 
 h1 {
-    @apply text-stone-200 text-3xl font-bold;
+    @apply font-mono text-stone-200 text-4xl font-bold tracking-wide;
 }
 h2 {
     @apply text-stone-200 text-[1.375rem] font-semibold;
