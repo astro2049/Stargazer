@@ -1,5 +1,5 @@
 import { ObserverDetails } from "../Main.tsx";
-import LabeledInput from "./LabeledInput";
+import LabeledInput from "./LabeledInput.tsx";
 
 type Props = {
     observer: ObserverDetails,

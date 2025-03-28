@@ -1,6 +1,6 @@
-import Navbar from "./Navbar/Navbar.tsx";
-import Main from "./main/Main.tsx";
-import Footer from "./Footer/Footer.tsx";
+import Navbar from "./sections/Navbar/Navbar.tsx";
+import Main from "./sections/Main/Main.tsx";
+import Footer from "./sections/Footer/Footer.tsx";
 
 function App() {
     return (

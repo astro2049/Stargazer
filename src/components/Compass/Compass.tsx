@@ -3,7 +3,7 @@ import { Graphics as PixiGraphics } from '@pixi/graphics';
 import { Stage, Container, Sprite, Text, Graphics } from '@pixi/react';
 import redArrow from "../../images/red-arrow.svg";
 // import cross from "../../images/lime-cross-rotated.svg";
-import { starMapConfig } from "../../main/constants.ts";
+import { starMapConfig } from "../../sections/Main/constants.ts";
 
 /* Constants */
 const radius = 350;
