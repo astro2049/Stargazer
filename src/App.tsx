@@ -4,7 +4,7 @@ import Footer from "./Footer/Footer.tsx";
 
 function App() {
     return (
-        <div className="bg-neutral-900 border-l-2 border-r-2 border-stone-800">
+        <div className="bg-neutral-900 border-l border-r border-stone-800">
             <Navbar></Navbar>
             <Main></Main>
             <Footer></Footer>

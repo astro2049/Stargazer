@@ -44,12 +44,15 @@ function StarMap(
 
     return (
         <div>
-            <div className="w-full flex items-center gap-x-1">
-                <div className="w-2 h-[1px] bg-sector-divider"></div>
-                <h2>Star Map</h2>
-                <div className="grow h-[1px] bg-sector-divider"></div>
+            <div className="mx-2">
+                <div className="flex items-center gap-x-1">
+                    <div className="w-1 h-[1px] bg-sector-divider"></div>
+                    <h2>🏜️ Star Map</h2>
+                    <div className="grow h-[1px] bg-sector-divider"></div>
+                </div>
+                <div ref={canvasRef} className="mt-1 relative flex justify-center overflow-hidden"></div>
             </div>
-            <div ref={canvasRef} className="mt-1 relative flex justify-center overflow-hidden"></div>
+
             {/*<Compass/>*/}
         </div>
     );
