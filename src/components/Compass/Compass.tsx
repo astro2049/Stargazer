@@ -12,7 +12,7 @@ const textStyle = new TextStyle({
     fontFamily: ["Consolas", "monospace"],
     align: "left",
     fill: 0xffffff,
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: "bold"
 });
 const referenceDirections = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
@@ -35,19 +35,20 @@ function draw(g: PixiGraphics): void {
     // 2. Draw tick marks
     g.lineStyle(2, lineColor, 0.5);
 
-    for (let offset = 0; offset < 360; offset += 3) {
-        let start = radius - 15;
+    for (let offset = 0; offset < 360; offset += 15) {
+        const start = radius - 50;
+        let end = start;
 
         if (offset % 90 === 0) {
-            start -= 75;
+            end += 45;
         } else if (offset % 45 === 0) {
-            start -= 50;
+            end += 30;
         } else {
-            start -= 25;
+            end += 15;
         }
 
         const startCoords = polarToCanvasCoordinates(start, offset);
-        const endCoords = polarToCanvasCoordinates(radius, offset);
+        const endCoords = polarToCanvasCoordinates(end, offset);
         g.moveTo(startCoords.x, startCoords.y);
         g.lineTo(endCoords.x, endCoords.y);
     }
@@ -63,7 +64,7 @@ function polarToCanvasCoordinates(radius: number, angle: number): {x: number, y:
 
 // Just for exporting the compass image
 function Compass() {
-    let offset = 0;
+    let angleOffset = 0;
 
     return (
         <Stage width={starMapConfig.width} height={starMapConfig.height}
@@ -90,19 +91,23 @@ function Compass() {
                     image={redArrow}
                     anchor={[0.5, 1]}
                     x={0}
-                    y={-radius - 20}
+                    y={-radius - 17.5}
                 />
 
                 {/* 3. Reference directions */}
                 {
                     referenceDirections.map((direction: string) => {
-                        const angle = offset;
-                        const coordinate = polarToCanvasCoordinates(radius, offset);
-                        offset += 45;
+                        const angle = angleOffset;
+                        let distance = radius;
+                        if (angle % 90 !== 0) {
+                            distance -= 15;
+                        }
+                        const coordinate = polarToCanvasCoordinates(distance, angleOffset);
+                        angleOffset += 45;
                         return (
                             <Text
                                 key={direction}
-                                text={direction}
+                                text={angle === 0 ? "N" : `${angle}° ${direction}`}
                                 anchor={[0.5, 1]}
                                 x={coordinate.x}
                                 y={coordinate.y}

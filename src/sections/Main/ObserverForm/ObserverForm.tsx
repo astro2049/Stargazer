@@ -24,19 +24,30 @@ function ObserverForm({
                 <div className="grow h-[1px] bg-sector-divider"></div>
             </div>
             <div className="w-full flex justify-center">
-                <div className="w-[600px] py-0.5 flex">
-                    <div className="w-1/2">
-                        <div className="text-stone-400 font-semibold">
-                            Date and time
+                <div className="w-[720px] py-0.5 flex">
+                    <div className="w-[calc(50%-1.5rem)]">
+                        <div className="flex items-center gap-x-0.5">
+                            <div className="w-1 h-[1px] bg-stone-800"></div>
+                            <div className="text-stone-400 font-semibold">
+                                Date and time
+                            </div>
+                            <div className="grow h-[1px] bg-stone-800"></div>
                         </div>
-                        <div>
+                        <div className="pl-1.5">
                             {date.toUTCString()}
                         </div>
                     </div>
 
-                    <div>
-                        <div className="text-stone-400 font-semibold">Location</div>
-                        <div className="pb-1 flex gap-x-1">
+                    <div className="grow">
+                        <div className="relative flex items-center gap-x-0.5">
+                            <div className="w-1 h-[1px] bg-stone-800"></div>
+                            <div className="text-stone-400 font-semibold">
+                                Location
+                            </div>
+                            <div className="grow h-[1px] bg-stone-800"></div>
+                            <div className="absolute top-0.75 w-[1px] h-[85px] bg-stone-800"></div>
+                        </div>
+                        <div className="pl-1.5 pb-1 flex gap-x-1">
                             <div className="flex">
                                 <LabeledInput
                                     label="Latitude"
@@ -90,8 +101,14 @@ function ObserverForm({
                                 m
                             </div>
                         </div>
-                        <div className="text-stone-400 font-semibold">Look direction</div>
-                        <div>
+                        <div className="flex items-center gap-x-0.5">
+                            <div className="w-1 h-[1px] bg-stone-800"></div>
+                            <div className="text-stone-400 font-semibold">
+                                Look direction
+                            </div>
+                            <div className="grow h-[1px] bg-stone-800"></div>
+                        </div>
+                        <div className="pl-1.5">
                             <div className="flex">
                                 <LabeledInput
                                     type="number"

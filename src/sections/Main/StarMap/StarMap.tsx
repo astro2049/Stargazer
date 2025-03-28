@@ -3,7 +3,7 @@ import { StarPosition } from "../Main.tsx";
 import { Body } from "astronomy-engine";
 import StarMapScene from "./StarMapScene.ts";
 import { bodies } from "../constants.ts";
-// import Compass from "../../components/Compass/Compass.tsx";
+// import Compass from "../../../components/Compass/Compass.tsx";
 
 type Props = {
     lookDirection: number, // in degrees
@@ -25,7 +25,7 @@ function StarMap(
 
         // Initialize star map scene
         starMapSceneRef.current = new StarMapScene(
-            { width: 640, height: 640 },
+            { width: 720, height: 720 },
             canvasRef as MutableRefObject<HTMLDivElement>,
             bodies
         );

@@ -79,7 +79,7 @@ function LabeledInput({
                 onChange={!readOnly ? handleChange : undefined}
                 onBlur={handleBlur}
                 readOnly={readOnly}
-                className={`w-[80px] outline-none border-b border-b-stone-400 ${error ? "focus:border-b-red-500" : ""}`}
+                className={`w-[80px] outline-none border-b border-b-stone-500 ${error ? "focus:border-b-red-500" : ""}`}
             />
             {label && <label className="block text-stone-300 text-sm">{label}</label>}
             <div className="absolute text-xs text-red-500 whitespace-nowrap">{error ? errorMessage : ""}</div>

@@ -74,13 +74,13 @@ class StarMapScene extends ThreeJsScene {
         // 3.1. Create text label
         this.lookDirectionTextUI = this.createTextObject(this.addCardinalToDirectionWithoutTrailingZeros(this.lookAzimuth));
         this.lookDirectionTextUI.center = new Vector2(0.5, 1);
-        this.lookDirectionTextUI.position.set(0, 3, 0);
+        this.lookDirectionTextUI.position.set(0, 2.9, 0);
         this.scene.add(this.lookDirectionTextUI);
         // 3.2. Add look direction line
         const line = new Line(
             new BufferGeometry().setFromPoints([
-                new Vector3(0, 0, 0),
-                new Vector3(0, 1.125, 0)
+                new Vector3(0, 2.25, 0),
+                new Vector3(0, 2.85, 0)
             ]),
             new LineBasicMaterial({
                 color: 0xffffff,
@@ -88,7 +88,6 @@ class StarMapScene extends ThreeJsScene {
                 opacity: 0.5
             })
         );
-        line.translateY(1.95);
         this.scene.add(line);
 
         // 4. Create map widgets
@@ -111,7 +110,7 @@ class StarMapScene extends ThreeJsScene {
     // II.D. Camera
     setUpCamera(): void {
         // Imagine we're standing from 5m looking at a 3m * 3m screen/wall
-        const distance = 3.2;
+        const distance = 3.1;
         this.camera = new OrthographicCamera(-distance, distance, distance, -distance, 0.1, distance + 0.1);
         this.camera.position.z = distance;
     }
@@ -182,7 +181,7 @@ class StarMapScene extends ThreeJsScene {
             const containerObject = new CSS2DObject(container);
             containerObject.center = new Vector2(0, 0.5);
             mesh.add(containerObject);
-            containerObject.translateX(0.175);
+            containerObject.translateX(0.15);
 
             this.stars.set(star, {
                 mesh: mesh,
