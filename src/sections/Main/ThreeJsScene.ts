@@ -1,5 +1,6 @@
 import { MutableRefObject } from "react";
-import { AxesHelper, Camera, Color, Object3D, Scene, WebGLRenderer } from "three";
+import { Camera, Color, Object3D, Scene, WebGLRenderer } from "three";
+// import { AxesHelper } from "three";
 import { CSS2DRenderer } from "three/examples/jsm/Addons.js";
 
 export type SceneConfig = {

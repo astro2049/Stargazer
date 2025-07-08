@@ -276,7 +276,7 @@ class StarMapScene extends ThreeJsScene {
         for (let i = 0; i < entries.length; i++) {
             const [body] = entries[i];
             const distance = (i + 1.5) * 0.225;
-            this.stars.get(body).updatePolarCoordinate(distance, starPositions.get(body)!.az, starPositions.get(body)!.alt);
+            this.stars.get(body)?.updatePolarCoordinate(distance, starPositions.get(body)!.az, starPositions.get(body)!.alt);
         }
 
         // Update stars (mesh and text)
