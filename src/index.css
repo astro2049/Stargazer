@@ -13,7 +13,7 @@
 
 body {
     @apply font-inter;
-    background-image: url('./images/cross-background.svg');
+    background-image: url('images/cross_orange_dim.svg');
     background-repeat: repeat;
     background-color: var(--color-stone-950);
     @apply text-content;

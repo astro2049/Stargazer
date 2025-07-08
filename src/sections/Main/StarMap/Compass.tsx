@@ -1,9 +1,9 @@
 import { TextStyle } from 'pixi.js';
 import { Graphics as PixiGraphics } from '@pixi/graphics';
 import { Stage, Container, Sprite, Text, Graphics } from '@pixi/react';
-import redArrow from "../../images/red-arrow.svg";
+import redArrow from "../../../images/arrow_red.svg";
 // import cross from "../../images/lime-cross-rotated.svg";
-import { starMapConfig } from "../../sections/Main/constants.ts";
+import { starMapConfig } from "../constants.ts";
 
 /* Constants */
 const radius = 350;
@@ -12,7 +12,7 @@ const textStyle = new TextStyle({
     fontFamily: ["Consolas", "monospace"],
     align: "left",
     fill: 0xffffff,
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: "bold"
 });
 const referenceDirections = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
@@ -23,8 +23,8 @@ function draw(g: PixiGraphics): void {
     g.position.set(starMapConfig.width / 2, starMapConfig.height / 2);
 
     // 0. Draw circle
-    // g.lineStyle(2, lineColor, 0.5);
-    // g.drawCircle(0, 0, radius - 25);
+    g.lineStyle(2, lineColor, 0.5);
+    g.drawCircle(0, 0, radius - 45);
     // g.drawCircle(0, 0, radius);
 
     // 1. Draw forward
