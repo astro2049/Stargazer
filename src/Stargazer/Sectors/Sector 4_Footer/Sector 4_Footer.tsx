@@ -1,4 +1,4 @@
-function Footer() {
+function Sector4_Footer() {
     return (
         <footer className="bg-neutral-950 border-t border-t-white/10">
             <h1 className="
@@ -26,4 +26,4 @@ function Footer() {
     )
 }
 
-export default Footer;
+export default Sector4_Footer;

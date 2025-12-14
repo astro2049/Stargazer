@@ -9,13 +9,13 @@ import {
     Vector2,
     Vector3
 } from "three";
-import ThreeJsScene, { SceneConfig } from "../ThreeJsScene.ts";
+import ThreeJsScene, { SceneConfig } from "./ThreeJsScene.ts";
 import triangle from "../../../images/triangle_orange.svg";
 import cross from "../../../images/cross_lime_rotated.svg";
 import { MutableRefObject } from "react";
 import { Body } from "astronomy-engine";
 import { CSS2DObject } from "three/examples/jsm/Addons.js";
-import { StarPosition } from "../Main.tsx";
+import { StarPosition } from "../../Main.tsx";
 import compass from "../../../images/compass.png"
 import Star from "./Star.ts";
 import {

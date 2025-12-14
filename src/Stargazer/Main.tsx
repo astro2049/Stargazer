@@ -1,9 +1,9 @@
 import { Body, Equator, Horizon, Observer } from "astronomy-engine";
-import ObserverForm from "./ObserverForm/ObserverForm.tsx";
 import { useEffect, useRef, useState } from "react";
-import StarMap from "./StarMap/StarMap.tsx";
-import StarsTable from "./StarsTable/StarsTable.tsx";
-import { bodies } from "./constants.ts";
+import { bodies } from "../constants.ts";
+import Sector1_Observer from "./Sectors/Sector 1_Observer/Sector 1_Observer.tsx";
+import Sector2_StarMap from "./Sectors/Sector 2_StarMap/Sector 2_StarMap.tsx";
+import Sector3_StarLocations from "./Sectors/Sector 3_StarLocations/Sector 3_StarLocations.tsx";
 
 /* Types */
 export type ObserverDetails = {
@@ -110,10 +110,10 @@ function Main() {
 
     return (
         <main>
-            <ObserverForm observer={observerDetails} setObserver={setObserverDetails} date={date}
-                          lookDirection={lookDirection} setLookDirection={setLookDirection}/>
-            <StarMap lookDirection={compassLookDirection} starPositions={starPositions}/>
-            <StarsTable starPositions={starPositions}/>
+            <Sector1_Observer observer={observerDetails} setObserver={setObserverDetails} date={date}
+                              lookDirection={lookDirection} setLookDirection={setLookDirection}/>
+            <Sector2_StarMap lookDirection={compassLookDirection} starPositions={starPositions}/>
+            <Sector3_StarLocations starPositions={starPositions}/>
         </main>
     );
 }

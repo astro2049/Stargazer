@@ -1,11 +1,11 @@
 import { Body } from "astronomy-engine";
-import { StarPosition } from "../Main.tsx";
+import { StarPosition } from "../../Main.tsx";
 
 type Props = {
     starPositions: Map<Body, StarPosition>
 };
 
-function StarsTable({ starPositions }: Props) {
+function Sector3_StarLocations({ starPositions }: Props) {
     return (
         <div className="mx-2">
             <div className="flex items-center gap-x-1">
@@ -47,4 +47,4 @@ function StarsTable({ starPositions }: Props) {
     );
 }
 
-export default StarsTable;
+export default Sector3_StarLocations;

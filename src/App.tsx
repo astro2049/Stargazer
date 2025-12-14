@@ -1,13 +1,13 @@
-import Navbar from "./sections/Navbar/Navbar.tsx";
-import Main from "./sections/Main/Main.tsx";
-import Footer from "./sections/Footer/Footer.tsx";
+import Sector0_Navbar from "./Stargazer/Sectors/Sector 0_Navbar/Sector 0_Navbar.tsx";
+import Main from "./Stargazer/Main.tsx";
+import Sector4_Footer from "./Stargazer/Sectors/Sector 4_Footer/Sector 4_Footer.tsx";
 
 function App() {
     return (
         <div className="bg-neutral-900 border-l border-r border-stone-800">
-            <Navbar></Navbar>
+            <Sector0_Navbar></Sector0_Navbar>
             <Main></Main>
-            <Footer></Footer>
+            <Sector4_Footer></Sector4_Footer>
         </div>
     )
 }

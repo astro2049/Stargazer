@@ -1,4 +1,4 @@
-import { ObserverDetails } from "../Main.tsx";
+import { ObserverDetails } from "../../Main.tsx";
 import LabeledInput from "./LabeledInput.tsx";
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
     setLookDirection: (lookDirection: number) => void
 };
 
-function ObserverForm({
+function Sector1_Observer({
                           observer,
                           setObserver,
                           date,
@@ -128,4 +128,4 @@ function ObserverForm({
     );
 }
 
-export default ObserverForm;
+export default Sector1_Observer;

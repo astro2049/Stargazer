@@ -1,8 +1,8 @@
 import { MutableRefObject, useEffect, useRef } from "react";
-import { StarPosition } from "../Main.tsx";
+import { StarPosition } from "../../Main.tsx";
 import { Body } from "astronomy-engine";
 import StarMapScene from "./StarMapScene.ts";
-import { bodies } from "../constants.ts";
+import { bodies } from "../../../constants.ts";
 // import Compass from "./Compass.tsx";
 
 type Props = {
@@ -10,7 +10,7 @@ type Props = {
     starPositions: Map<Body, StarPosition>
 };
 
-function StarMap(
+function Sector2_StarMap(
     {
         lookDirection,
         starPositions
@@ -58,4 +58,4 @@ function StarMap(
     );
 }
 
-export default StarMap;
+export default Sector2_StarMap;

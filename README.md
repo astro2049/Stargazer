@@ -22,12 +22,12 @@ More planets and stars coming in future updates!
 
 ```html
 <App>
-  <Navbar/>
+  <Sector0_Navbar/>
   <Main>
-    <ObserverForm/>
-    <StarMap/>
-    <StarsTable/>
+    <Sector1_Observer/>
+    <Sector2_StarMap/>
+    <Sector3_StarLocations/>
   </Main>
-  <Footer/>
+  <Sector4_Footer/>
 </App>
 ```
