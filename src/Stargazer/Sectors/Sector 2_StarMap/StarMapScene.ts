@@ -120,12 +120,15 @@ class StarMapScene extends ThreeJsScene {
         this.myCamera.myThreeCamera.attach(this.lookDirectionTextUI);
         // 2. add coordinate axes
         this.addObjectToScene(this.myObjectFabricator.CreateAxisLineX());
-        this.myCamera.myThreeCamera.attach(this.myObjectFabricator.CreateAxisLineY());
+        this.myCamera.myThreeCamera.attach(this.myObjectFabricator.CreateAxisLineYPositive());
+        this.myCamera.myThreeCamera.attach(this.myObjectFabricator.CreateAxisLineYNegative());
         this.addObjectToScene(this.myObjectFabricator.CreateAxisLineZ());
         // 3. add axis forward
         this.myCamera.myThreeCamera.attach(this.myObjectFabricator.CreateAxisLineForward());
         // 4. add zenith text
         this.addObjectToScene(this.myObjectFabricator.CreateZenithText());
+        // 5. add earth dome
+        this.addObjectToScene(this.myObjectFabricator.CreateEarthDome());
     }
 
     // II.8. Create widgets with textures
@@ -147,9 +150,11 @@ class StarMapScene extends ThreeJsScene {
             // 1.2. add stars (triangle icons and texts)
             this.InitializeStars(stars, triangleTexture);
             // 1.3. add center cross
-            this.addObjectToScene(this.myObjectFabricator.CreateCross(crossTexture));
+            const centerCross = this.myObjectFabricator.CreateCross(crossTexture);
+            centerCross.rotation.z = Math.PI / 4;
+            this.myCamera.myThreeCamera.attach(centerCross);
             // 1.4. add you
-            this.addObjectToScene(this.myObjectFabricator.CreateYouText());
+            this.myCamera.myThreeCamera.attach(this.myObjectFabricator.CreateYouText());
             // 1.5. forward arrow
             this.myCamera.myThreeCamera.attach(this.myObjectFabricator.CreateForwardArrow(arrowLimeTexture));
             // 1.6. zenith arrow

@@ -13,14 +13,16 @@ import SG_Vector3 from "../../Common/SG_Vector3.ts";
 const Const_LineMaterial = new LineBasicMaterial({
     color: 0xffffff,
     transparent: true,
-    opacity: 0.25
+    opacity: 0.25,
+    depthTest: false
 });
 const Const_DashedLineMaterial = new LineDashedMaterial({
     color: 0xffffff,
     transparent: true,
-    opacity: 0.15,
+    opacity: 0.1,
     dashSize: 0.1,
     gapSize: 0.06,
+    depthTest: false
 });
 
 export default class Star {

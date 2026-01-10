@@ -5,7 +5,8 @@ const referenceDirections = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
 function CreatePlaneMeshFromSvgTexture(aPlaneGeometry: PlaneGeometry, aTexture: Texture): Mesh {
     return new Mesh(aPlaneGeometry, new MeshBasicMaterial({
         map: aTexture,
-        transparent: true
+        transparent: true,
+        depthTest: false
     }));
 }
 
