@@ -1,7 +1,8 @@
 import { MutableRefObject } from "react";
-import { Camera, Color, Object3D, Scene, WebGLRenderer } from "three";
+import { Color, Object3D, Scene, WebGLRenderer } from "three";
 // import { AxesHelper } from "three";
 import { CSS2DRenderer } from "three/examples/jsm/Addons.js";
+import Camera from "./Camera.ts";
 
 export type SceneConfig = {
     width: number,
@@ -17,7 +18,7 @@ abstract class ThreeJsScene {
     private renderer!: WebGLRenderer;
     private css2DRenderer!: CSS2DRenderer;
 
-    camera!: Camera;
+    myCamera: Camera = new Camera();
 
     /* II. Functions - Constructor */
     // II.1. Constructor
@@ -79,8 +80,8 @@ abstract class ThreeJsScene {
     /* III. Functionalities */
     // III.1. Render
     protected render(): void {
-        this.renderer.render(this.scene, this.camera);
-        this.css2DRenderer.render(this.scene, this.camera);
+        this.renderer.render(this.scene, this.myCamera.myThreeCamera);
+        this.css2DRenderer.render(this.scene, this.myCamera.myThreeCamera);
     }
 
     // III.2. Add object to scene

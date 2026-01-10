@@ -1,91 +1,111 @@
-import { Mesh, PlaneGeometry, Texture, Vector2, Vector3 } from "three";
+import {
+    BufferGeometry, Line, LineBasicMaterial, LineDashedMaterial,
+    Mesh,
+    PlaneGeometry, Texture,
+    Vector2, Vector3
+} from "three";
 import { CSS2DObject } from "three/examples/jsm/Addons.js";
-import { addCardinalToDirection, createPlaneMeshFromSvgTexture } from "./Utilities.ts";
+import { AddCardinalToDirection, CreatePlaneMeshFromSvgTexture } from "./Utilities.ts";
+import PolarCoordinate from "./PolarCoordinate.ts";
+import Camera from "./Camera.ts";
+import SG_Vector3 from "../../Common/SG_Vector3.ts";
 
-class PolarCoordinate {
-    radius: number
-    azimuth: number // in degrees
-    altitudeAngle: number // in degrees
-
-    constructor(radius: number = 0, azimuth: number = 0, altitudeAngle: number = 0) {
-        this.radius = radius;
-        this.azimuth = azimuth;
-        this.altitudeAngle = altitudeAngle;
-    }
-
-    // rotate counterclockwise x degrees
-    rotate(angle: number): PolarCoordinate {
-        return new PolarCoordinate(this.radius, this.azimuth - angle, this.altitudeAngle);
-    }
-
-    toCartesianCoordinates(): {x: number, y: number, z: number} {
-        const angleRad = (-this.azimuth + 90) * Math.PI / 180;
-        const altitudeRad = this.altitudeAngle * Math.PI / 180;
-        return {
-            x: this.radius * Math.cos(angleRad),
-            y: this.radius * Math.sin(angleRad),
-            z: this.radius * Math.sin(altitudeRad)
-        }
-    }
-}
+const Const_LineMaterial = new LineBasicMaterial({
+    color: 0xffffff,
+    transparent: true,
+    opacity: 0.25
+});
+const Const_DashedLineMaterial = new LineDashedMaterial({
+    color: 0xffffff,
+    transparent: true,
+    opacity: 0.15,
+    dashSize: 0.1,
+    gapSize: 0.06,
+});
 
 export default class Star {
-    mesh: Mesh
-    polarCoordinate = new PolarCoordinate();
+    myMesh: Mesh;
+    myPolarCoordinate = new PolarCoordinate();
     // text div references
-    azimuthText: HTMLDivElement
-    // altitudeAngleText: HTMLDivElement
+    myAzimuthText!: HTMLDivElement;
+    // myAltitudeAngleText!: HTMLDivElement;
+    // lines
+    lineToCenter: Line = new Line();
+    lineToXZPlane: Line = new Line();
 
-    constructor(name: string, planeGeometry: PlaneGeometry, texture: Texture, cameraPosition: Vector3) {
-        // 0. Mesh
-        this.mesh = createPlaneMeshFromSvgTexture(planeGeometry, texture);
-        this.mesh.up.set(0, 0, 1);
-        this.mesh.lookAt(cameraPosition);
+    constructor(aName: string, aTriangleTexture: Texture) {
+        // 0. mesh
+        this.myMesh = CreatePlaneMeshFromSvgTexture(new PlaneGeometry(0.175, 0.175), aTriangleTexture);
+        this.myMesh.rotation.order = "YXZ";
+        this.myMesh.rotation.x = -30 * Math.PI / 180;
 
-        // 1. Text
-        const container = document.createElement("div");
-        container.style.fontSize = "14px";
-        // azimuth
-        this.azimuthText = document.createElement("div");
-        this.azimuthText.style.lineHeight = "normal";
-        this.azimuthText.style.color = "rgba(255, 255, 255, 0.75)";
-        container.appendChild(this.azimuthText);
+        // 1. texts
+        this.CreateTexts(aName);
+    }
+
+    UpdateMeshPosition(): void {
+        // 0. Update position
+        const { x, y, z } = this.CalculatePos().ToThreeJsVector3();
+        this.myMesh.position.set(x, y, z);
+
+        // 1. Update texts
+        this.myAzimuthText.innerText = `${AddCardinalToDirection(this.myPolarCoordinate.GetPolar().x)}`;
+        // const altitudeAngle: number = this.myPolarCoordinate.GetPolar().y;
+        // this.myAltitudeAngleText.innerText = `${altitudeAngle > 0 ? "+" : ""}${altitudeAngle.toFixed(1)}°`;
+
+        this.lineToCenter = new Line(
+            new BufferGeometry().setFromPoints([
+                new Vector3(x, y, z),
+                new Vector3(0, 0, 0)
+            ]),
+            Const_LineMaterial
+        );
+        this.lineToXZPlane = new Line(
+            new BufferGeometry().setFromPoints([
+                new Vector3(x, y, z),
+                new Vector3(x, 0, z),
+                new Vector3(x, 0, z),
+                new Vector3(0, 0, 0)
+            ]),
+            Const_DashedLineMaterial
+        );
+        this.lineToXZPlane.computeLineDistances();
+    }
+
+    CalculatePos(): SG_Vector3 {
+        const { x: azimuth, y: altitudeAngle, z: radius } = this.myPolarCoordinate.GetPolar();
+        const angleRad = Math.PI / 2 - azimuth * Math.PI / 180;
+        const altitudeRad = altitudeAngle * Math.PI / 180;
+        return new SG_Vector3(radius * Math.cos(angleRad), radius * Math.sin(altitudeRad), radius * Math.sin(angleRad));
+    }
+
+    UpdateMeshRotation(aCamera: Camera): void {
+        this.myMesh.rotation.y = (aCamera.GetAzimuth() + 90) * Math.PI / 180;
+    }
+
+    private CreateTexts(aName: string): void {
+        const divElement = document.createElement("div");
+        divElement.style.fontSize = "14px";
         // name
         const nameText = document.createElement("div");
         nameText.style.fontWeight = "bold";
         nameText.style.lineHeight = "normal";
-        nameText.textContent = name;
-        container.appendChild(nameText);
+        nameText.textContent = aName;
+        divElement.appendChild(nameText);
+        // azimuth
+        this.myAzimuthText = document.createElement("div");
+        this.myAzimuthText.style.lineHeight = "normal";
+        this.myAzimuthText.style.color = "rgba(255, 255, 255, 0.75)";
+        divElement.appendChild(this.myAzimuthText);
         // altitude angle
-        // this.altitudeAngleText = document.createElement("div");
-        // this.altitudeAngleText.style.lineHeight = "normal";
-        // container.appendChild(this.altitudeAngleText);
+        // this.myAltitudeAngleText = document.createElement("div");
+        // this.myAltitudeAngleText.style.lineHeight = "normal";
+        // this.myAltitudeAngleText.style.color = "rgba(255, 255, 255, 0.75)";
+        // divElement.appendChild(this.myAltitudeAngleText);
 
-        const containerObject = new CSS2DObject(container);
-        containerObject.center = new Vector2(0, 0.5);
-        this.mesh.add(containerObject);
-        containerObject.translateX(0.15);
-    }
-
-    updatePolarCoordinate(distance: number, azimuth: number, altitudeAngle: number) {
-        this.polarCoordinate.radius = distance;
-        this.polarCoordinate.azimuth = azimuth;
-        this.polarCoordinate.altitudeAngle = altitudeAngle;
-    }
-
-    render(lookAzimuth: number, projectionPoints: number[]) {
-        // 0. Update position
-        const { x, y, z } = this.polarCoordinate.rotate(lookAzimuth).toCartesianCoordinates();
-        this.mesh.position.set(x, y, z);
-
-        // 1. Update texts
-        this.azimuthText.innerText = `${addCardinalToDirection(this.polarCoordinate.azimuth)}`;
-        // this.altitudeAngleText.innerText = `alt: ${this.polarCoordinate.altitudeAngle.toFixed(2)}°`;
-
-        // 2. Add projection points
-        projectionPoints.push(x, y, z);
-        projectionPoints.push(x, y, 0);
-        projectionPoints.push(x, y, 0);
-        projectionPoints.push(0, 0, 0);
+        const container = new CSS2DObject(divElement);
+        container.center = new Vector2(0, 0.5);
+        this.myMesh.add(container);
+        container.translateX(0.15);
     }
 }

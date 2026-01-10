@@ -1,6 +1,6 @@
 import { Body, Equator, Horizon, Observer } from "astronomy-engine";
 import { useEffect, useRef, useState } from "react";
-import { bodies } from "../constants.ts";
+import { Const_Bodies } from "../constants.ts";
 import Sector1_Observer from "./Sectors/Sector 1_Observer/Sector 1_Observer.tsx";
 import Sector2_StarMap from "./Sectors/Sector 2_StarMap/Sector 2_StarMap.tsx";
 import Sector3_StarLocations from "./Sectors/Sector 3_StarLocations/Sector 3_StarLocations.tsx";
@@ -27,7 +27,7 @@ export type StarPosition = {
 // JavaScript examples for the browser: https://github.com/cosinekitty/astronomy/tree/master/demo/browser
 function calculateStarPositions(date: Date, observer: Observer): Map<Body, StarPosition> {
     const starPositions = new Map<Body, StarPosition>();
-    bodies.forEach(body => {
+    Const_Bodies.forEach(body => {
         const eqaCoordsJ2000 = Equator(body, date, observer, false, true);
         const eqaCoordsOfDate = Equator(body, date, observer, true, true);
         const hor = Horizon(date, observer, eqaCoordsOfDate.ra, eqaCoordsOfDate.dec, "normal");

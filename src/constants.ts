@@ -1,7 +1,7 @@
 import { Body } from "astronomy-engine";
 
 /* Const variables */
-export const bodies = [
+const Const_Bodies = [
     Body.Sun,
     Body.Moon,
     Body.Mercury,
@@ -13,7 +13,22 @@ export const bodies = [
     Body.Neptune,
 ];
 
-export const starMapConfig = {
-    width: 800,
-    height: 800,
+const Const_StarMapSceneCanvasSize = {
+    width: 720,
+    height: 720,
 }
+
+// camera
+const Const_CameraDistance = 5;
+const Const_CameraViewSize = 5.5;
+
+// scene
+const Const_MapRadius = 3;
+
+export {
+    Const_Bodies,
+    Const_StarMapSceneCanvasSize,
+    Const_CameraDistance,
+    Const_CameraViewSize,
+    Const_MapRadius
+};

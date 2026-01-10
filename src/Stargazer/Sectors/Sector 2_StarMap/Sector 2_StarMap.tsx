@@ -2,7 +2,7 @@ import { MutableRefObject, useEffect, useRef } from "react";
 import { StarPosition } from "../../Main.tsx";
 import { Body } from "astronomy-engine";
 import StarMapScene from "./StarMapScene.ts";
-import { bodies } from "../../../constants.ts";
+import { Const_Bodies } from "../../../constants.ts";
 // import Compass from "./Compass.tsx";
 
 type Props = {
@@ -27,7 +27,7 @@ function Sector2_StarMap(
         starMapSceneRef.current = new StarMapScene(
             { width: 720, height: 720 },
             canvasRef as MutableRefObject<HTMLDivElement>,
-            bodies
+            Const_Bodies
         );
 
         // Cleanup
@@ -35,11 +35,11 @@ function Sector2_StarMap(
     }, []);
 
     useEffect(() => {
-        starMapSceneRef.current?.updateStarPositions(starPositions);
+        starMapSceneRef.current?.UpdateStarPositions(starPositions);
     }, [starPositions]);
 
     useEffect(() => {
-        starMapSceneRef.current?.updateLookDirection(lookDirection);
+        starMapSceneRef.current?.UpdateLookDirection(lookDirection);
     }, [lookDirection]);
 
     return (

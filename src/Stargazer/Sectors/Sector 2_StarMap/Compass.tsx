@@ -3,9 +3,12 @@ import { Graphics as PixiGraphics } from '@pixi/graphics';
 import { Stage, Container, Sprite, Text, Graphics } from '@pixi/react';
 import redArrow from "../../../images/arrow_red.svg";
 // import cross from "../../images/lime-cross-rotated.svg";
-import { starMapConfig } from "../../../constants.ts";
 
 /* Constants */
+const canvasSize = {
+    width: 800,
+    height: 800
+};
 const radius = 350;
 const lineColor = 0xffffff;
 const textStyle = new TextStyle({
@@ -20,7 +23,7 @@ const referenceDirections = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
 /* Functions */
 function draw(g: PixiGraphics): void {
     g.clear();
-    g.position.set(starMapConfig.width / 2, starMapConfig.height / 2);
+    g.position.set(canvasSize.width / 2, canvasSize.height / 2);
 
     // 0. Draw circle
     g.lineStyle(2, lineColor, 0.5);
@@ -67,11 +70,11 @@ function Compass() {
     let angleOffset = 0;
 
     return (
-        <Stage width={starMapConfig.width} height={starMapConfig.height}
+        <Stage width={canvasSize.width} height={canvasSize.height}
                options={{ backgroundAlpha: 0, antialias: true }}>
             {/* 1. Tick Marks */}
             <Graphics draw={draw}/>
-            <Container x={starMapConfig.width / 2} y={starMapConfig.height / 2}>
+            <Container x={canvasSize.width / 2} y={canvasSize.height / 2}>
                 {/* Center Cross */}
                 {/*<Sprite*/}
                 {/*    image={cross}*/}
