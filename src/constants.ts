@@ -3,9 +3,9 @@ import { Body } from "astronomy-engine";
 /* Const variables */
 const Const_Bodies = [
     Body.Sun,
-    Body.Moon,
     Body.Mercury,
     Body.Venus,
+    Body.Moon,
     Body.Mars,
     Body.Jupiter,
     Body.Saturn,

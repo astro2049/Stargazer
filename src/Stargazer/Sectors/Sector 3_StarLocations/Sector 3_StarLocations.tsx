@@ -1,5 +1,6 @@
 import { Body } from "astronomy-engine";
 import { StarPosition } from "../../Main.tsx";
+import { AddCardinalToDirection } from "../Sector 2_StarMap/Utilities.ts";
 
 type Props = {
     starPositions: Map<Body, StarPosition>
@@ -18,11 +19,11 @@ function Sector3_StarLocations({ starPositions }: Props) {
                     <thead>
                     <tr className="text-left text-stone-300 border-b border-neutral-700">
                         <th className="w-1/6">Body</th>
-                        <th className="w-1/6">Right Ascension (h)</th>
-                        <th className="w-1/6">Declination (°)</th>
-                        <th className="w-1/6">Azimuth (°)</th>
-                        <th className="w-1/6">Altitude Angle (°)</th>
-                        <th className="w-1/6">Distance (AU)</th>
+                        <th className="w-1/6">Right Ascension</th>
+                        <th className="w-1/6">Declination</th>
+                        <th className="w-1/6">Azimuth</th>
+                        <th className="w-1/6">Altitude Angle</th>
+                        <th className="w-1/6">Distance</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -31,11 +32,11 @@ function Sector3_StarLocations({ starPositions }: Props) {
                             return (
                                 <tr key={body} className="border-b border-neutral-700">
                                     <td className="font-medium">{body}</td>
-                                    <td>{positionInfo.ra.toFixed(2)}</td>
-                                    <td>{positionInfo.dec.toFixed(2)}</td>
-                                    <td>{positionInfo.az.toFixed(2)}</td>
-                                    <td>{positionInfo.alt.toFixed(2)}</td>
-                                    <td>{positionInfo.dist.toFixed(2)}</td>
+                                    <td>{positionInfo.ra.toFixed(1)}h</td>
+                                    <td>{`${positionInfo.dec > 0 ? "+" : ""}${positionInfo.dec.toFixed(1)}°`}</td>
+                                    <td>{AddCardinalToDirection(positionInfo.az)}</td>
+                                    <td>{`${positionInfo.alt > 0 ? "+" : ""}${positionInfo.alt.toFixed(1)}°`}</td>
+                                    <td>{positionInfo.dist.toFixed(1)} AU</td>
                                 </tr>
                             );
                         }
