@@ -10,7 +10,7 @@ import { StarPosition } from "../../Main.tsx";
 import compass from "../../../images/compass.png"
 import Star from "./Star.ts";
 import {
-    AddCardinalToDirectionWithoutTrailingZeros
+    GetDirectionAndCardinalText
 } from "./Utilities.ts";
 import arrowLime from "../../../images/arrow_lime.svg"
 import arrowLimeDimmer from "../../../images/arrow_lime_dimmer.svg"
@@ -89,7 +89,7 @@ class StarMapScene extends ThreeJsScene {
         }
 
         this.lookAzimuth = direction;
-        this.lookDirectionTextUI.element.textContent = AddCardinalToDirectionWithoutTrailingZeros(direction);
+        this.lookDirectionTextUI.element.textContent = GetDirectionAndCardinalText(direction, false);
         this.myCamera.SetAzimuthOffset(-this.lookAzimuth);
 
         // Update stars (mesh rotations)

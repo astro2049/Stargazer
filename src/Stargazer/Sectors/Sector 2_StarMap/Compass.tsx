@@ -2,6 +2,7 @@ import { TextStyle } from 'pixi.js';
 import { Graphics as PixiGraphics } from '@pixi/graphics';
 import { Stage, Container, Sprite, Text, Graphics } from '@pixi/react';
 import redArrow from "../../../images/arrow_red.svg";
+import { GetCardinalText } from "./Utilities.ts";
 // import cross from "../../images/lime-cross-rotated.svg";
 
 /* Constants */
@@ -18,7 +19,6 @@ const textStyle = new TextStyle({
     fontSize: 16,
     fontWeight: "bold"
 });
-const referenceDirections = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
 
 /* Functions */
 function draw(g: PixiGraphics): void {
@@ -36,24 +36,45 @@ function draw(g: PixiGraphics): void {
     // g.lineTo(0, -radius);
 
     // 2. Draw tick marks
-    g.lineStyle(2, lineColor, 0.5);
+    g.lineStyle(1, lineColor, 0.5);
 
-    for (let offset = 0; offset < 360; offset += 15) {
+    for (let angle = 0; angle < 360; angle += 15) {
         const start = radius - 50;
-        let end = start;
-
-        if (offset % 90 === 0) {
-            end += 45;
-        } else if (offset % 45 === 0) {
-            end += 30;
-        } else {
-            end += 15;
-        }
-
-        const startCoords = polarToCanvasCoordinates(start, offset);
-        const endCoords = polarToCanvasCoordinates(end, offset);
+        const end = getRadius(angle);
+        const startCoords = polarToCanvasCoordinates(start, angle);
+        const endCoords = polarToCanvasCoordinates(end, angle);
         g.moveTo(startCoords.x, startCoords.y);
         g.lineTo(endCoords.x, endCoords.y);
+    }
+}
+
+function getDirectionTextAndCardinal() {
+    const elements = [];
+    for (let angle = 0; angle < 360; angle += 45) {
+        const distance = getRadius(angle) + 5;
+        const coordinate = polarToCanvasCoordinates(distance, angle);
+        elements.push(
+            <Text
+                key={angle}
+                text={angle === 0 ? "N" : `${angle}° ${GetCardinalText(angle)}`}
+                anchor={[0.5, 1]}
+                x={coordinate.x}
+                y={coordinate.y}
+                angle={angle}
+                style={textStyle}
+            />
+        );
+    }
+    return elements;
+}
+
+function getRadius(anOffset: number): number {
+    if (anOffset % 90 === 0) {
+        return radius - 5;
+    } else if (anOffset % 45 === 0) {
+        return radius - 20;
+    } else {
+        return radius - 35;
     }
 }
 
@@ -67,8 +88,6 @@ function polarToCanvasCoordinates(radius: number, angle: number): {x: number, y:
 
 // Just for exporting the compass image
 function Compass() {
-    let angleOffset = 0;
-
     return (
         <Stage width={canvasSize.width} height={canvasSize.height}
                options={{ backgroundAlpha: 0, antialias: true }}>
@@ -98,28 +117,7 @@ function Compass() {
                 />
 
                 {/* 3. Reference directions */}
-                {
-                    referenceDirections.map((direction: string) => {
-                        const angle = angleOffset;
-                        let distance = radius;
-                        if (angle % 90 !== 0) {
-                            distance -= 15;
-                        }
-                        const coordinate = polarToCanvasCoordinates(distance, angleOffset);
-                        angleOffset += 45;
-                        return (
-                            <Text
-                                key={direction}
-                                text={angle === 0 ? "N" : `${angle}° ${direction}`}
-                                anchor={[0.5, 1]}
-                                x={coordinate.x}
-                                y={coordinate.y}
-                                angle={angle}
-                                style={textStyle}
-                            />
-                        )
-                    })
-                }
+                {getDirectionTextAndCardinal()}
             </Container>
         </Stage>
     );

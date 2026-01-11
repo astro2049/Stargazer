@@ -5,7 +5,7 @@ import {
     Vector2, Vector3
 } from "three";
 import { CSS2DObject } from "three/examples/jsm/Addons.js";
-import { AddCardinalToDirection, CreatePlaneMeshFromSvgTexture } from "./Utilities.ts";
+import { GetDirectionAndCardinalText, CreatePlaneMeshFromSvgTexture } from "./Utilities.ts";
 import PolarCoordinate from "./PolarCoordinate.ts";
 import Camera from "./Camera.ts";
 import SG_Vector3 from "../../Common/SG_Vector3.ts";
@@ -51,7 +51,7 @@ export default class Star {
         this.myMesh.position.set(x, y, z);
 
         // 1. Update texts
-        this.myAzimuthText.innerText = `${AddCardinalToDirection(this.myPolarCoordinate.GetPolar().x)}`;
+        this.myAzimuthText.innerText = `${GetDirectionAndCardinalText(this.myPolarCoordinate.GetPolar().x, true)}`;
         // const altitudeAngle: number = this.myPolarCoordinate.GetPolar().y;
         // this.myAltitudeAngleText.innerText = `${altitudeAngle > 0 ? "+" : ""}${altitudeAngle.toFixed(1)}°`;
 

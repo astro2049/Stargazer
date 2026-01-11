@@ -1,7 +1,5 @@
 import { Mesh, MeshBasicMaterial, PlaneGeometry, Texture, Vector3 } from "three";
 
-const referenceDirections = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
-
 function CreatePlaneMeshFromSvgTexture(aPlaneGeometry: PlaneGeometry, aTexture: Texture): Mesh {
     return new Mesh(aPlaneGeometry, new MeshBasicMaterial({
         map: aTexture,
@@ -10,14 +8,15 @@ function CreatePlaneMeshFromSvgTexture(aPlaneGeometry: PlaneGeometry, aTexture: 
     }));
 }
 
-function AddCardinalToDirectionWithoutTrailingZeros(degrees: number): string {
-    const index = Math.round(degrees / 45) % 8;
-    return `${parseFloat(degrees.toFixed(2))}° ${referenceDirections[index]}`;
+function GetDirectionAndCardinalText(degrees: number, keepTrailingZeros: boolean): string {
+    return `${keepTrailingZeros ? degrees.toFixed(1) : parseFloat(degrees.toFixed(2))}° ${GetCardinalText(degrees)}`;
 }
 
-function AddCardinalToDirection(degrees: number): string {
+const referenceDirections = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
+
+function GetCardinalText(degrees: number): string {
     const index = Math.round(degrees / 45) % 8;
-    return `${degrees.toFixed(1)}° ${referenceDirections[index]}`;
+    return referenceDirections[index];
 }
 
 function ToThreeJsVector3(x: number, y: number, z: number) {
@@ -26,7 +25,7 @@ function ToThreeJsVector3(x: number, y: number, z: number) {
 
 export {
     CreatePlaneMeshFromSvgTexture,
-    AddCardinalToDirectionWithoutTrailingZeros,
-    AddCardinalToDirection,
+    GetDirectionAndCardinalText,
+    GetCardinalText,
     ToThreeJsVector3
 };

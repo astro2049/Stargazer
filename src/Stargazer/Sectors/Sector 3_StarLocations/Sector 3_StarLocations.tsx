@@ -1,6 +1,6 @@
 import { Body } from "astronomy-engine";
 import { StarPosition } from "../../Main.tsx";
-import { AddCardinalToDirection } from "../Sector 2_StarMap/Utilities.ts";
+import { GetDirectionAndCardinalText } from "../Sector 2_StarMap/Utilities.ts";
 
 type Props = {
     starPositions: Map<Body, StarPosition>
@@ -34,7 +34,7 @@ function Sector3_StarLocations({ starPositions }: Props) {
                                     <td className="font-medium">{body}</td>
                                     <td>{positionInfo.ra.toFixed(1)}h</td>
                                     <td>{`${positionInfo.dec > 0 ? "+" : ""}${positionInfo.dec.toFixed(1)}°`}</td>
-                                    <td>{AddCardinalToDirection(positionInfo.az)}</td>
+                                    <td>{GetDirectionAndCardinalText(positionInfo.az, true)}</td>
                                     <td>{`${positionInfo.alt > 0 ? "+" : ""}${positionInfo.alt.toFixed(1)}°`}</td>
                                     <td>{positionInfo.dist.toFixed(1)} AU</td>
                                 </tr>

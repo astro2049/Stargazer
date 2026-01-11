@@ -1,5 +1,5 @@
 import {
-    AddCardinalToDirectionWithoutTrailingZeros,
+    GetDirectionAndCardinalText,
     CreatePlaneMeshFromSvgTexture,
     ToThreeJsVector3
 } from "./Utilities.ts";
@@ -140,7 +140,7 @@ export default class StarMapSceneObjectFabricator {
     }
 
     CreateLookDirectionText(anAzimuth: number): CSS2DObject {
-        const textObject = this.CreateTextObject(AddCardinalToDirectionWithoutTrailingZeros(anAzimuth));
+        const textObject = this.CreateTextObject(GetDirectionAndCardinalText(anAzimuth, false));
         textObject.center = new Vector2(0.5, 1);
         const { x, y, z } = ToThreeJsVector3(0, 0.1, Const_MapRadius + 0.1);
         textObject.position.set(x, y, z);
