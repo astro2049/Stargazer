@@ -119,10 +119,12 @@ class StarMapScene extends ThreeJsScene {
         this.lookDirectionTextUI = this.myObjectFabricator.CreateLookDirectionText(this.lookAzimuth);
         this.myCamera.myThreeCamera.attach(this.lookDirectionTextUI);
         // 2. add coordinate axes
-        this.addObjectToScene(this.myObjectFabricator.CreateAxisLineX());
+        // this.addObjectToScene(this.myObjectFabricator.CreateAxisLineX());
+        this.myCamera.myThreeCamera.attach(this.myObjectFabricator.CreateLocalAxisLineX());
         this.myCamera.myThreeCamera.attach(this.myObjectFabricator.CreateAxisLineYPositive());
         this.myCamera.myThreeCamera.attach(this.myObjectFabricator.CreateAxisLineYNegative());
         this.addObjectToScene(this.myObjectFabricator.CreateAxisLineZ());
+        this.myCamera.myThreeCamera.attach(this.myObjectFabricator.CreateLocalAxisLineZ());
         // 3. add axis forward
         this.myCamera.myThreeCamera.attach(this.myObjectFabricator.CreateAxisLineForward());
         // 4. add zenith text

@@ -18,7 +18,7 @@ import { Const_MapRadius } from "../../../constants.ts";
 const axisLineMaterial0 = new LineBasicMaterial({
     color: 0xffffff,
     transparent: true,
-    opacity: 0.25,
+    opacity: 0.1,
     depthTest: false
 });
 const axisLineMaterial1 = new LineBasicMaterial({
@@ -42,6 +42,15 @@ export default class StarMapSceneObjectFabricator {
                 ToThreeJsVector3(Const_MapRadius, 0, 0)
             ]),
             axisLineMaterial1
+        );
+    }
+    CreateLocalAxisLineX() {
+        return new Line(
+            new BufferGeometry().setFromPoints([
+                ToThreeJsVector3(-Const_MapRadius, 0, 0),
+                ToThreeJsVector3(Const_MapRadius, 0, 0)
+            ]),
+            axisLineMaterial0
         );
     }
 
@@ -122,10 +131,19 @@ export default class StarMapSceneObjectFabricator {
     CreateAxisLineZ() {
         return new Line(
             new BufferGeometry().setFromPoints([
-                ToThreeJsVector3(0, 0, -Const_MapRadius),
+                ToThreeJsVector3(0, 0, 0),
                 ToThreeJsVector3(0, 0, Const_MapRadius)
             ]),
             axisLineMaterial1
+        );
+    }
+    CreateLocalAxisLineZ() {
+        return new Line(
+            new BufferGeometry().setFromPoints([
+                ToThreeJsVector3(0, 0, -Const_MapRadius),
+                ToThreeJsVector3(0, 0, Const_MapRadius)
+            ]),
+            axisLineMaterial0
         );
     }
 

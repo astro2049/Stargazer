@@ -19,7 +19,7 @@ const Const_LineMaterial = new LineBasicMaterial({
 const Const_DashedLineMaterial = new LineDashedMaterial({
     color: 0xffffff,
     transparent: true,
-    opacity: 0.1,
+    opacity: 0.05,
     dashSize: 0.1,
     gapSize: 0.06,
     depthTest: false
